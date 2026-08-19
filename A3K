@@ -1,10 +1,20 @@
+--// KEY SYSTEM - YOUR OWN ROBLOX GAME
+
 local Players = game:GetService("Players")
 local GuiService = game:GetService("GuiService")
 
 local player = Players.LocalPlayer
 
-local CORRECT_KEY = "A3K ON"
-local GET_KEY_URL = "https://discord.gg/vxd3pA97n"
+--========================
+-- CONFIGURATION
+--========================
+
+local CORRECT_KEY = "1234-ABCD"
+local GET_KEY_URL = "https://discord.gg/TONSERVEUR"
+
+--========================
+-- GUI
+--========================
 
 local gui = Instance.new("ScreenGui")
 gui.Name = "KeySystem"
@@ -24,6 +34,10 @@ local corner = Instance.new("UICorner")
 corner.CornerRadius = UDim.new(0, 12)
 corner.Parent = main
 
+--========================
+-- TITLE
+--========================
+
 local title = Instance.new("TextLabel")
 title.Size = UDim2.new(1, -50, 0, 45)
 title.Position = UDim2.new(0, 15, 0, 5)
@@ -34,6 +48,10 @@ title.TextSize = 24
 title.Font = Enum.Font.GothamBold
 title.TextXAlignment = Enum.TextXAlignment.Left
 title.Parent = main
+
+--========================
+-- CLOSE BUTTON
+--========================
 
 local close = Instance.new("TextButton")
 close.Size = UDim2.new(0, 35, 0, 35)
@@ -50,8 +68,12 @@ closeCorner.CornerRadius = UDim.new(0, 8)
 closeCorner.Parent = close
 
 close.MouseButton1Click:Connect(function()
-    gui:Destroy()
+	gui:Destroy()
 end)
+
+--========================
+-- KEY BOX
+--========================
 
 local keyBox = Instance.new("TextBox")
 keyBox.Size = UDim2.new(1, -40, 0, 45)
@@ -59,6 +81,7 @@ keyBox.Position = UDim2.new(0, 20, 0, 65)
 keyBox.BackgroundColor3 = Color3.fromRGB(35, 35, 42)
 keyBox.BorderSizePixel = 0
 keyBox.PlaceholderText = "Enter your key..."
+keyBox.PlaceholderColor3 = Color3.fromRGB(150, 150, 150)
 keyBox.Text = ""
 keyBox.TextColor3 = Color3.fromRGB(255, 255, 255)
 keyBox.TextSize = 16
@@ -69,6 +92,10 @@ keyBox.Parent = main
 local keyCorner = Instance.new("UICorner")
 keyCorner.CornerRadius = UDim.new(0, 8)
 keyCorner.Parent = keyBox
+
+--========================
+-- CHECK KEY
+--========================
 
 local check = Instance.new("TextButton")
 check.Size = UDim2.new(0.48, -5, 0, 45)
@@ -84,6 +111,10 @@ local checkCorner = Instance.new("UICorner")
 checkCorner.CornerRadius = UDim.new(0, 8)
 checkCorner.Parent = check
 
+--========================
+-- GET KEY
+--========================
+
 local getKey = Instance.new("TextButton")
 getKey.Size = UDim2.new(0.48, -5, 0, 45)
 getKey.Position = UDim2.new(0.52, -15, 0, 125)
@@ -98,6 +129,10 @@ local getCorner = Instance.new("UICorner")
 getCorner.CornerRadius = UDim.new(0, 8)
 getCorner.Parent = getKey
 
+--========================
+-- STATUS
+--========================
+
 local status = Instance.new("TextLabel")
 status.Size = UDim2.new(1, -40, 0, 30)
 status.Position = UDim2.new(0, 20, 0, 180)
@@ -108,34 +143,48 @@ status.TextSize = 14
 status.Font = Enum.Font.Gotham
 status.Parent = main
 
+--========================
+-- CHECK FUNCTION
+--========================
+
 check.MouseButton1Click:Connect(function()
 
-    if keyBox.Text == "" then
-        status.Text = "Please enter a key."
-        status.TextColor3 = Color3.fromRGB(255, 180, 80)
-        return
-    end
+	if keyBox.Text == "" then
+		status.Text = "Please enter a key."
+		status.TextColor3 = Color3.fromRGB(255, 180, 80)
+		return
+	end
 
-    if keyBox.Text == CORRECT_KEY then
-        status.Text = "Key accepted!"
-        status.TextColor3 = Color3.fromRGB(80, 255, 120)
+	if keyBox.Text == CORRECT_KEY then
 
-        task.wait(1)
-        gui:Destroy()
-    else
-        status.Text = "Invalid key."
-        status.TextColor3 = Color3.fromRGB(255, 80, 80)
-    end
+		status.Text = "Key accepted!"
+		status.TextColor3 = Color3.fromRGB(80, 255, 120)
 
+		task.wait(1)
+
+		gui:Destroy()
+
+		-- Place your own game's code here.
+
+	else
+
+		status.Text = "Invalid key."
+		status.TextColor3 = Color3.fromRGB(255, 80, 80)
+
+	end
 end)
+
+--========================
+-- GET KEY
+--========================
 
 getKey.MouseButton1Click:Connect(function()
 
-    status.Text = "Opening key link..."
-    status.TextColor3 = Color3.fromRGB(180, 180, 255)
+	status.Text = "Opening key link..."
+	status.TextColor3 = Color3.fromRGB(180, 180, 255)
 
-    pcall(function()
-        GuiService:OpenBrowserWindow(GET_KEY_URL)
-    end)
+	pcall(function()
+		GuiService:OpenBrowserWindow(GET_KEY_URL)
+	end)
 
 end)
