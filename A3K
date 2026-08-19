@@ -1,4 +1,4 @@
---// KEY SYSTEM - YOUR OWN ROBLOX GAME
+--// KEY SYSTEM - TON PROPRE JEU ROBLOX
 
 local Players = game:GetService("Players")
 local GuiService = game:GetService("GuiService")
@@ -9,8 +9,8 @@ local player = Players.LocalPlayer
 -- CONFIGURATION
 --========================
 
-local CORRECT_KEY = "1234-ABCD"
-local GET_KEY_URL = "https://discord.gg/TONSERVEUR"
+local CORRECT_KEY = "5377-HACK"
+local GET_KEY_URL = "https://discord.gg/A3K"
 
 --========================
 -- GUI
@@ -34,10 +34,7 @@ local corner = Instance.new("UICorner")
 corner.CornerRadius = UDim.new(0, 12)
 corner.Parent = main
 
---========================
--- TITLE
---========================
-
+-- TITRE
 local title = Instance.new("TextLabel")
 title.Size = UDim2.new(1, -50, 0, 45)
 title.Position = UDim2.new(0, 15, 0, 5)
@@ -49,10 +46,7 @@ title.Font = Enum.Font.GothamBold
 title.TextXAlignment = Enum.TextXAlignment.Left
 title.Parent = main
 
---========================
--- CLOSE BUTTON
---========================
-
+-- FERMER
 local close = Instance.new("TextButton")
 close.Size = UDim2.new(0, 35, 0, 35)
 close.Position = UDim2.new(1, -43, 0, 10)
@@ -68,13 +62,10 @@ closeCorner.CornerRadius = UDim.new(0, 8)
 closeCorner.Parent = close
 
 close.MouseButton1Click:Connect(function()
-	gui:Destroy()
+    gui:Destroy()
 end)
 
---========================
--- KEY BOX
---========================
-
+-- CHAMP DE KEY
 local keyBox = Instance.new("TextBox")
 keyBox.Size = UDim2.new(1, -40, 0, 45)
 keyBox.Position = UDim2.new(0, 20, 0, 65)
@@ -93,10 +84,7 @@ local keyCorner = Instance.new("UICorner")
 keyCorner.CornerRadius = UDim.new(0, 8)
 keyCorner.Parent = keyBox
 
---========================
 -- CHECK KEY
---========================
-
 local check = Instance.new("TextButton")
 check.Size = UDim2.new(0.48, -5, 0, 45)
 check.Position = UDim2.new(0, 20, 0, 125)
@@ -111,10 +99,7 @@ local checkCorner = Instance.new("UICorner")
 checkCorner.CornerRadius = UDim.new(0, 8)
 checkCorner.Parent = check
 
---========================
 -- GET KEY
---========================
-
 local getKey = Instance.new("TextButton")
 getKey.Size = UDim2.new(0.48, -5, 0, 45)
 getKey.Position = UDim2.new(0.52, -15, 0, 125)
@@ -129,10 +114,7 @@ local getCorner = Instance.new("UICorner")
 getCorner.CornerRadius = UDim.new(0, 8)
 getCorner.Parent = getKey
 
---========================
--- STATUS
---========================
-
+-- MESSAGE
 local status = Instance.new("TextLabel")
 status.Size = UDim2.new(1, -40, 0, 30)
 status.Position = UDim2.new(0, 20, 0, 180)
@@ -143,48 +125,39 @@ status.TextSize = 14
 status.Font = Enum.Font.Gotham
 status.Parent = main
 
---========================
--- CHECK FUNCTION
---========================
-
+-- VERIFICATION
 check.MouseButton1Click:Connect(function()
 
-	if keyBox.Text == "" then
-		status.Text = "Please enter a key."
-		status.TextColor3 = Color3.fromRGB(255, 180, 80)
-		return
-	end
+    if keyBox.Text == "" then
+        status.Text = "Please enter a key."
+        status.TextColor3 = Color3.fromRGB(255, 180, 80)
+        return
+    end
 
-	if keyBox.Text == CORRECT_KEY then
+    if keyBox.Text == CORRECT_KEY then
 
-		status.Text = "Key accepted!"
-		status.TextColor3 = Color3.fromRGB(80, 255, 120)
+        status.Text = "Key accepted!"
+        status.TextColor3 = Color3.fromRGB(80, 255, 120)
 
-		task.wait(1)
+        task.wait(1)
+        gui:Destroy()
 
-		gui:Destroy()
+    else
 
-		-- Place your own game's code here.
+        status.Text = "Invalid key."
+        status.TextColor3 = Color3.fromRGB(255, 80, 80)
 
-	else
-
-		status.Text = "Invalid key."
-		status.TextColor3 = Color3.fromRGB(255, 80, 80)
-
-	end
+    end
 end)
 
---========================
--- GET KEY
---========================
-
+-- LIEN DISCORD
 getKey.MouseButton1Click:Connect(function()
 
-	status.Text = "Opening key link..."
-	status.TextColor3 = Color3.fromRGB(180, 180, 255)
+    status.Text = "Opening key link..."
+    status.TextColor3 = Color3.fromRGB(180, 180, 255)
 
-	pcall(function()
-		GuiService:OpenBrowserWindow(GET_KEY_URL)
-	end)
+    pcall(function()
+        GuiService:OpenBrowserWindow(GET_KEY_URL)
+    end)
 
 end)
